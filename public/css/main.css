@@ -1,0 +1,19 @@
+.nav-button {
+    margin-right: 5px;
+}
+
+.user-message {
+    margin: auto;
+    margin-top: 10px;
+    width: 50%;
+    border: 1px solid #4771fa;
+    padding: .5rem;
+    border-radius: 3px;
+    background: #b9c9ff;
+    text-align: center;
+}
+
+.user-message-error {
+    border-color: red;
+    background: rgb(255, 145, 145);
+}

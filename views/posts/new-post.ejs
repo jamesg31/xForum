@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/post.css">
+<script src="https://cdn.tiny.cloud/1/rjewxwyc9z9bs4nw6qqadp29vuqbvtgjqjmk4404aij6qelk/tinymce/5/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+      selector: '#content',
+      menubar: false,
+    });
+  </script>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+<% if (errorMessage) { %>
+    <div class="user-message user-message-error"><%= errorMessage %></div>
+<% } %>
+<div class="card">
+    <article class="card-body">
+    <h4 class="card-title mb-4 mt-1">New Post</h4>
+        <form action="/new-post" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-group">
+                <input name="title" id="title" class="form-control" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Post</button>
+            </div>
+        </form>
+    </article>
+</div>
+        
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+<% if (errorMessage) { %>
+    <div class="user-message user-message-error"><%= errorMessage %></div>
+<% } %>
+<% if (notification) { %>
+    <div class="user-message"><%= notification %></div>
+<% } %>
+<div class="card">
+    <article class="card-body">
+    <a href="/login" class="float-right btn btn-outline-primary">Login</a>
+    <h4 class="card-title mb-4 mt-1">Register</h4>
+        <form action="/register" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-group">
+                <label>Email</label>
+                <input name="email" id="email" class="form-control" placeholder="example@example.com" type="email">
+            </div>
+            <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" id="username" class="form-control" placeholder="john123">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input name="password" id="password" class="form-control" placeholder="********" type="password">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </form>
+    </article>
+</div>
+        
+<%- include('../includes/end.ejs') %>

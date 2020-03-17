@@ -1,0 +1,10 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <p>Hello!</p>
+
+<%- include('../includes/end.ejs') %>
+
+<input type="hidden" name="_csrf" value="<%= csrfToken %>">

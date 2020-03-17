@@ -1,0 +1,18 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/post.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+<% if (errorMessage) { %>
+    <div class="user-message user-message-error"><%= errorMessage %></div>
+<% } %>
+<div class="card">
+    <article class="card-body">
+    <h4 class="card-title mb-4 mt-1"><%= title %></h4>
+    <%- content %>
+    <i>Created <%= date %> by <%= name %></i>
+    </article>
+</div>
+        
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/">Reddit</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <a class="nav-link" href="/"> Posts</a>
+        <a class="nav-link" href="/users"> Users</a>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <form class="form-inline my-2 my-lg-0 nav-item nav-button">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 nav-item nav-button" type="submit">Search</button>
+        </form>      
+        <% if (isAuthenticated) { %>
+        <li class="nav-item nav-button"><form action="/new-post" method="GET"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button type="submit" class="btn btn-outline-primary nav-button">New Post</button></form></li>
+        <li class="nav-item nav-button"><form action="/logout" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button type="submit" class="btn btn-outline-secondary nav-button">Logout</button></form></li>
+        <% } else { %>
+        <li class="nav-item nav-button"><a class="btn btn-outline-secondary nav-button" href="/login">Login</a></li>
+        <li class="nav-item"><a class="btn btn-primary nav-buatton" href="/register">Register</a></li>    
+        <% } %>
+    </ul>
+</nav>
