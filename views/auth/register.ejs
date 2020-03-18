@@ -4,12 +4,6 @@
 
 <body>
 <%- include('../includes/navigation.ejs') %>
-<% if (errorMessage) { %>
-    <div class="user-message user-message-error"><%= errorMessage %></div>
-<% } %>
-<% if (notification) { %>
-    <div class="user-message"><%= notification %></div>
-<% } %>
 <div class="card">
     <article class="card-body">
     <a href="/login" class="float-right btn btn-outline-primary">Login</a>

@@ -36,12 +36,31 @@ app.use(csrfProtection);
 app.use(flash());
 
 app.use((req, res, next) => {
+    let error = req.flash('error');
+    if (error.length > 0) {
+        error = error[0];
+    } else {
+        error = null;
+    }
+    let notification = req.flash('notification');
+    if (notification.length > 0) {
+        notification = notification[0];
+    } else {
+        notification = null;
+    }
+
+    res.locals.notification = notification;
+    res.locals.error = error;
     res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken();
     next();
 });
 
+const mainRoutes = require('./routes/main');
+const forumRoutes = require('./routes/forum');
 const authRoutes = require('./routes/auth');
+app.use(mainRoutes);
+app.use(forumRoutes);
 app.use(authRoutes);
 
 db.connect((err) => {

@@ -3,4 +3,20 @@
 </head>
 
 <body>
+    <%- include('./includes/navigation.ejs') %>
+    <% for(i=0; i<Object.keys(data).length; i++) { %>
+    <div class="card catagory">
+        <article class="card-body">
+        <h4 class="card-title mb-4 mt-1"><%= Object.keys(data)[i] %></h4>
+        <% for(x=0; x<Object.keys(data[Object.keys(data)[i]]).length; x++) { %>
+            <div class="card forum">
+                <article class="card-body">
+                <h4 class="forum-title card-title"><a href="/forum/<%= urls[i][x] %>"><%= Object.keys(data[Object.keys(data)[i]])[x] %></a></h4>
+                <p class="forum-desc"><%= data[Object.keys(data)[i]][Object.keys(data[Object.keys(data)[i]])[x]] %></p>
+                </article>
+            </div>
+        <% } %>
+        </article>
+    </div>
+    <% } %>
 <%- include('./includes/end.ejs') %>

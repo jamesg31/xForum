@@ -12,23 +12,9 @@ const transporter = nodemailer.createTransport(sendgrid({
 }));
 
 exports.getLogin = (req, res, next) => {
-    let message = req.flash('error');
-    if (message.length > 0) {
-        message = message[0];
-    } else {
-        message = null;
-    }
-    let notification = req.flash('notification');
-    if (notification.length > 0) {
-        notification = notification[0];
-    } else {
-        notification = null;
-    }
     res.render('auth/login', {
         path: '/login',
-        pageTitle: 'Login',
-        errorMessage: message,
-        notification: notification
+        pageTitle: 'Login'
     });
 };
 
@@ -60,23 +46,9 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.getRegister = (req, res, next) => {
-    let message = req.flash('error');
-    if (message.length > 0) {
-        message = message[0];
-    } else {
-        message = null;
-    }
-    let notification = req.flash('notification');
-    if (notification.length > 0) {
-        notification = notification[0];
-    } else {
-        notification = null;
-    }
     res.render('auth/register', {
         path: '/register',
-        pageTitle: 'Register',
-        errorMessage: message,
-        notification: notification
+        pageTitle: 'Register'
     });
 };
 
@@ -125,16 +97,9 @@ exports.postLogout = (req, res, next) => {
 };
 
 exports.getReset = (req, res, next) => {
-    let message = req.flash('error');
-    if (message.length > 0) {
-        message = message[0];
-    } else {
-        message = null;
-    }
     res.render('auth/reset', {
         path: '/reset',
-        pageTitle: 'Reset Password',
-        errorMessage: message
+        pageTitle: 'Reset Password'
     });
 };
 
@@ -173,16 +138,9 @@ exports.getNewPassword = (req, res, next) => {
         if (user.length == 0) {
             res.redirect('/');
         }
-        let message = req.flash('error');
-        if (message.length > 0) {
-            message = message[0];
-        } else {
-            message = null;
-        }
         res.render('auth/new-password', {
             path: '/new-password',
             pageTitle: 'Set New Passord',
-            errorMessage: message,
             user_id: user[0].user_id.toString(),
             passToken: token
         }); 

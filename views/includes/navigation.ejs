@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <!-- Brand/logo -->
-    <a class="navbar-brand" href="/">Reddit</a>
+    <a class="navbar-brand" href="/">xForum</a>
 
     <!-- Links -->
     <ul class="navbar-nav">
@@ -21,3 +21,10 @@
         <% } %>
     </ul>
 </nav>
+
+<% if (error) { %>
+    <div class="user-message user-message-error"><%= error %></div>
+<% } %>
+<% if (notification) { %>
+    <div class="user-message"><%= notification %></div>
+<% } %>
